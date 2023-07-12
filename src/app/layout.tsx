@@ -1,7 +1,12 @@
-import './globals.css';
-import { Inter } from 'next/font/google';
+'use client';
+import { Provider } from 'react-redux';
+import { Oxygen } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+import { store } from '@/store';
+
+import './globals.css';
+
+const oxygen = Oxygen({ weight: ['400', '700'], subsets: ['latin'] });
 
 export const metadata = {
   title: 'Weather App',
@@ -17,7 +22,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
+      <Provider store={store}>
+        <body
+          className={`${oxygen.className} py-5 min-[768px]:[margin-inline:10%]`}
+        >
+          {children}
+        </body>
+      </Provider>
     </html>
   );
 }

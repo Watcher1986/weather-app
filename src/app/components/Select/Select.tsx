@@ -1,40 +1,32 @@
 import React, { useState } from 'react';
-import Select, { OnChangeValue } from 'react-select';
+import Select from 'react-select';
 
+import { SelectHandlerProps, SelectOptionType } from '../Weatherboard/types';
 import { selectStyles } from './styles-config';
 
-interface OptionType {
-  value: string;
-  label: string;
-}
+const CustomSelect: React.FC<{
+  selectData: OptionType[];
+  placeholder: string;
+  handleSelect: (options: SelectHandlerProps) => void;
+}> = ({ selectData, placeholder, handleSelect }) => {
+  const handleChange = (selectedOption: SelectOptionType) => {
+    if (Array.isArray(selectedOption)) return handleSelect(selectedOption);
 
-const options: OptionType[] = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
-];
-
-const CustomSelect: React.FC = () => {
-  const [selectedOptions, setSelectedOptions] = useState<readonly OptionType[]>(
-    []
-  );
-
-  const handleChange = (selectedOption: OnChangeValue<OptionType, true>) => {
-    setSelectedOptions(selectedOption);
+    handleSelect(+selectedOption?.value);
   };
 
   return (
     <Select
-      isMulti
-      placeholder='Country'
-      value={selectedOptions}
+      className='md:w-[160px]'
+      isMulti={placeholder === 'Country'}
+      placeholder={placeholder}
       hideSelectedOptions={false}
       isClearable={false}
       closeMenuOnSelect={false}
       controlShouldRenderValue={false}
       // @ts-ignore
       onChange={handleChange}
-      options={options}
+      options={selectData}
       styles={selectStyles}
     />
   );

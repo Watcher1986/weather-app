@@ -47,9 +47,9 @@ const data = [
   },
 ];
 
-export const Chart = () => {
+export const WeatherChart = () => {
   return (
-    <section className='md:w-[453px] h-[432px] rounded-2xl bg-[#1a1a1a] px-3 py-2 relative'>
+    <section className='min-[998px]:max-w-[453px] h-[432px] rounded-2xl bg-[#1a1a1a] px-3 py-2 relative'>
       <h5 className='absolute top-3 left-5 text-white'>Analitics</h5>
       <ResponsiveContainer width='100%' height='100%'>
         <BarChart data={data}>

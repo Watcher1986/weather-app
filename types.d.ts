@@ -43,3 +43,12 @@ type Weather = {
   country: string;
   forecast: Forecast;
 };
+
+type WeatherProps = {
+  cities: City[];
+};
+
+interface OptionType {
+  value: string;
+  label: string;
+}

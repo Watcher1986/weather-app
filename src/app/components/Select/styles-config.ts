@@ -4,7 +4,7 @@ export const selectStyles: StylesConfig = {
   control: (_, { isFocused }) => ({
     display: 'flex',
     height: '40px',
-    width: '160px',
+    // width: '160px',
     borderRadius: '12px',
     backgroundColor: '#313131',
     border: `1px solid ${isFocused ? '#B3FC4F' : '#515151'}`,
