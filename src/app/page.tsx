@@ -1,5 +1,3 @@
-'use client';
-
 import { WeatherView } from './components/WeatherView';
 
 export default function Home() {

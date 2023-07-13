@@ -1,3 +1,4 @@
+'use client';
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from '@/store/hooks/reduxHooks';
@@ -8,7 +9,7 @@ import Weatherboard from './Weatherboard';
 
 import { cities } from '../../../public/mockdata/cities';
 
-export const WeatherView = () => {
+export function WeatherView() {
   const { weather } = useSelector((state) => state.weather);
   const dispatch = useDispatch();
 
@@ -22,4 +23,4 @@ export const WeatherView = () => {
       <Weatherboard />
     </section>
   );
-};
+}

@@ -1,4 +1,5 @@
 'use client';
+import type { Metadata } from 'next';
 import { Provider } from 'react-redux';
 import { Oxygen } from 'next/font/google';
 
@@ -9,11 +10,10 @@ import './globals.css';
 
 const oxygen = Oxygen({ weight: ['400', '700'], subsets: ['latin'] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Weather App',
   description: 'European weather monitoring app',
   keywords: 'weather, monitoring, european, weather, app',
-  author: 'deniss2007@gmail.com',
 };
 
 export default function RootLayout({
