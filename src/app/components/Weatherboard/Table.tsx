@@ -1,8 +1,11 @@
 import { getMinMaxTemperature } from '@/helpers/getMinMaxTemperature';
+import { useWeatherContext } from '@/context/weather';
+
 import { WeatherTableProps } from './types';
 
 const Table: React.FC<WeatherTableProps> = ({ weatherData, min, max }) => {
-  console.log(min, max);
+  const { setCityForChart } = useWeatherContext();
+
   return (
     <div className='w-full h-full border border-[#313131] rounded-2xl overflow-clip'>
       <div className='custom-scrollbar w-full h-full overflow-auto'>
@@ -26,6 +29,7 @@ const Table: React.FC<WeatherTableProps> = ({ weatherData, min, max }) => {
           <tbody className='text-sm'>
             {weatherData.map(({ city, forecast }) => (
               <tr
+                onClick={() => setCityForChart({ city, forecast })}
                 key={city}
                 className='nth-odd grid grid-cols-4 cursor-pointer'
               >

@@ -1,5 +1,4 @@
 import { useCallback, useMemo, useState } from 'react';
-import { MultiValue } from 'react-select';
 import { useSelector } from '@/store/hooks/reduxHooks';
 
 import CustomSelect from '../Select/Select';
@@ -26,26 +25,16 @@ function Weatherboard() {
 
   const handleSelectMinTemperature = useCallback(
     (value: SelectHandlerProps) => {
-      console.log(value);
-
       if (typeof value === 'number') setMinTemperature(value);
     },
     []
   );
   const handleSelectMaxTemperature = useCallback(
     (value: SelectHandlerProps) => {
-      console.log(value);
       if (typeof value === 'number') setMaxTemperature(value);
     },
     []
   );
-
-  const handleMinMaxTemperature = useCallback(() => {}, [
-    minTemperature,
-    maxTemperature,
-  ]);
-
-  console.log(selectedCountries, minTemperature, maxTemperature);
 
   const minMaxTemperatureRange = useMemo(() => getTemperatureRange(), []);
 

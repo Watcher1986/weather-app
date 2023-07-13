@@ -12,7 +12,7 @@ type City = {
   };
 };
 
-type Forecast = {
+interface IForecast {
   latitude: number;
   longitude: number;
   generationtime_ms: number;
@@ -36,12 +36,12 @@ type Forecast = {
     time: string[];
     temperature_2m: number[];
   };
-};
+}
 
 type Weather = {
   city: string;
-  country: string;
-  forecast: Forecast;
+  country?: string;
+  forecast: IForecast;
 };
 
 type WeatherProps = {

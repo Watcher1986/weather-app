@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import {
   BarChart,
   Bar,
@@ -10,49 +11,27 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-const data = [
-  {
-    name: 'Page A',
-    celsius: 24,
-  },
-  {
-    name: 'Page B',
-    celsius: 18,
-    // amt: 2210,
-  },
-  {
-    name: 'Page C',
-    celsius: 10,
-    // amt: 2290,
-  },
-  {
-    name: 'Page D',
-    celsius: -30,
-    // amt: 2000,
-  },
-  {
-    name: 'Page E',
-    celsius: 24,
-    // amt: 2181,
-  },
-  {
-    name: 'Page F',
-    celsius: 22,
-    // amt: 2500,
-  },
-  {
-    name: 'Page G',
-    celsius: 19,
-    // amt: 2100,
-  },
-];
+import { useSelector } from '@/store/hooks/reduxHooks';
+import { useWeatherContext } from '@/context/weather';
+import { getCityChartData } from '@/helpers/getCityChartData';
+import { getAllCitiesChartData } from '@/helpers/getAllCitiesDataForChart';
 
 export const WeatherChart = () => {
+  const { weather } = useSelector((state) => state.weather);
+  const { city } = useWeatherContext();
+
+  const chartData = useMemo(() => {
+    if (city === null) return getAllCitiesChartData(weather);
+    return getCityChartData(city?.forecast?.hourly?.temperature_2m);
+  }, [city, weather]);
+
   return (
     <section className='min-[998px]:max-w-[453px] h-[432px] rounded-2xl bg-[#1a1a1a] px-3 py-2 relative'>
-      <h5 className='absolute top-3 left-5 text-white'>Analitics</h5>
+      <h5 className='absolute top-3 left-5 text-white'>
+        Analitics {city === null ? 'for all cities' : city.city}
+      </h5>
       <ResponsiveContainer width='100%' height='100%'>
-        <BarChart data={data}>
+        <BarChart data={chartData}>
           <defs>
             <linearGradient id='colorGradient' x1='0' y1='0' x2='0' y2='1'>
               <stop offset='0%' stopColor='#B3FC4F' stopOpacity={1} />
