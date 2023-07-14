@@ -2,13 +2,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { fetchCityWeather } from '../../../lib/fetchCityWeather';
 
-import { Error } from '../types';
+import { ThunkError } from '../types';
 
 export const getWeatherAnalitics = createAsyncThunk<
   Weather[],
   WeatherProps,
   {
-    rejectValue: Error;
+    rejectValue: ThunkError;
   }
 >('weatherAnalitics/getWeatherAnalitics', async (args, thunkApi) => {
   const { cities } = args;

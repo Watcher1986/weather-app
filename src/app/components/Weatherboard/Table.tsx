@@ -1,3 +1,5 @@
+'use client';
+
 import { getMinMaxTemperature } from '@/helpers/getMinMaxTemperature';
 import { useWeatherContext } from '@/context/weather';
 

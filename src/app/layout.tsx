@@ -1,10 +1,5 @@
-'use client';
 import type { Metadata } from 'next';
-import { Provider } from 'react-redux';
 import { Oxygen } from 'next/font/google';
-
-import { WeatherProvider } from '@/context/weather';
-import { store } from '@/store';
 
 import './globals.css';
 
@@ -23,15 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <Provider store={store}>
-        <WeatherProvider>
-          <body
-            className={`${oxygen.className} py-5 min-[768px]:[margin-inline:10%]`}
-          >
-            {children}
-          </body>
-        </WeatherProvider>
-      </Provider>
+      <body
+        className={`${oxygen.className} py-5 min-[768px]:[margin-inline:10%]`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

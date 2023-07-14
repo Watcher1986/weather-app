@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback, useMemo, useState } from 'react';
 import { useSelector } from '@/store/hooks/reduxHooks';
 
@@ -47,7 +49,7 @@ function Weatherboard() {
   }, [selectedCountries, weather]);
 
   return (
-    <section className='flex flex-col h-[432px] px-4 pb-[18px] pt-[24px] bg-[#1a1a1a] rounded-2xl min-[1224px]:w-[641px]'>
+    <div className='flex flex-col h-[432px] px-4 pb-[18px] pt-[24px] bg-[#1a1a1a] rounded-2xl min-[1224px]:w-[641px]'>
       <div className='flex flex-row gap-3 pb-[22px]'>
         <CustomSelect
           placeholder='Country'
@@ -70,7 +72,7 @@ function Weatherboard() {
         min={minTemperature}
         max={maxTemperature}
       />
-    </section>
+    </div>
   );
 }
 
